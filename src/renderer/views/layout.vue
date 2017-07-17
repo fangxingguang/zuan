@@ -90,6 +90,14 @@
         <Menu-item name="/taskFreeAdd">发布任务</Menu-item>
       </div>
     </Menu>
+    <Menu mode="horizontal" class="layout-sub-menu" :active-name="$route.path" @on-select="menuRouter" v-show="menuShow('/taskAuto')">
+      <div class="layout-assistant">
+        <Menu-item name="/taskAuto">自动任务</Menu-item>
+        <Menu-item name="/taskAutoSend">已发任务</Menu-item>
+        <Menu-item name="/taskAutoMy">我的任务</Menu-item>
+        <Menu-item name="/taskAutoAdd">发布任务</Menu-item>
+      </div>
+    </Menu>
     <div class="layout-content">
       <router-view></router-view>
     </div>
@@ -99,7 +107,7 @@
           <Dropdown placement="top-end" trigger="click" @on-click="setClick">
             <Button type="primary" icon="gear-b" shape="circle">设置</Button>
             <Dropdown-menu slot="list">
-              <Dropdown-item name="bindTaobao">绑定账号</Dropdown-item>
+              <Dropdown-item name="taobaoBind">绑定账号</Dropdown-item>
               <Dropdown-item divided>充值</Dropdown-item>
               <Dropdown-item divided>联系客服</Dropdown-item>
             </Dropdown-menu>

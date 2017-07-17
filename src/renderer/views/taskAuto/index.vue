@@ -4,7 +4,7 @@
       <Row>
         <Col span="12">
         <Icon type="help-circled"></Icon>
-        <a href="#">接任务必看，违者封号！  自动任务</a>
+        <a href="#">自动任务</a>
         </Col>
         <Col span="12">
         <span class="search-input">
@@ -19,9 +19,10 @@
       <div data-v-ed72c544="" class="ivu-table-wrapper">
         <div class="ivu-table">
           <div class="ivu-table-body">
-            <table cellspacing="0" cellpadding="0" border="0" style="width: 767px;">
+            <table cellspacing="0" cellpadding="0" border="0">
               <colgroup>
-                <col>
+                <col width="600">
+                <col width="150">
                 <col width="150">
               </colgroup>
               <tbody class="ivu-table-tbody">
@@ -47,11 +48,16 @@
                       </span>
                     </div>
                   </td>
+                  <td>
+                    <div class="ivu-table-cell">
+                      <Button type="primary" size="small">详情</Button>&nbsp;
+                    </div>
+                  </td>
                   <td class="">
                     <div class="ivu-table-cell">
                       <div>
                         <button type="button" class="ivu-btn ivu-btn-warning">
-                          搜索相近商品
+                          邀请互拍
                         </button>
                       </div>
                     </div>

@@ -12,49 +12,63 @@ export default new Router({
       children: [
         {
           path: '/',
-          component: require('@/views/home/index'),
+          component: require('@/views/index/index'),
         },
         {
-          name: 'taskFree',
           path: '/taskFree',
-          component: require('@/views/home/taskFree'),
+          component: require('@/views/taskFree/index'),
         },
         {
-          name: 'taskFree',
           path: '/taskFreeAdd',
-          component: require('@/views/home/taskFreeAdd'),
+          component: require('@/views/taskFree/add'),
         },
         {
           path: '/taskFreeSend',
-          component: require('@/views/home/taskFreeSend'),
+          component: require('@/views/taskFree/send'),
         },
         {
           path: '/taskFreeMy',
-          component: require('@/views/home/taskFreeMy'),
+          component: require('@/views/taskFree/my'),
         },
         {
           path: '/taskAuto',
-          component: require('@/views/home/taskAuto'),
+          component: require('@/views/taskAuto/index'),
+        },
+        {
+          path: '/taskAutoAdd',
+          component: require('@/views/taskAuto/add'),
+        },
+        {
+          path: '/taskAutoSend',
+          component: require('@/views/taskAuto/send'),
+        },
+        {
+          path: '/taskAutoMy',
+          component: require('@/views/taskAuto/my'),
         },
         {
           path: '/flow',
-          component: require('@/views/home/flow'),
+          component: require('@/views/flow/index'),
         },
         {
           path: '/user',
-          component: require('@/views/home/user'),
+          component: require('@/views/user/index'),
         },
         {
           path: '/express',
-          component: require('@/views/home/express'),
+          component: require('@/views/express/index'),
         },
         {
           path: '/login',
-          component: require('@/views/login'),
+          component: require('@/views/user/login'),
         },
         {
-          path: '/bindTaobao',
-          component: require('@/views/home/bindTaobao'),
+          path: '/register',
+          component: require('@/views/user/register'),
+        },
+        {
+          path: '/taobaoBind',
+          component: require('@/views/taobao/bind'),
         }
       ]
     }
