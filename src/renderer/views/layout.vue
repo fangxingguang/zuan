@@ -58,7 +58,7 @@
           <Icon type="android-people"></Icon>
           免费任务大厅
         </Menu-item>
-        <Menu-item name="/taskAuto">
+        <Menu-item name="/taskAutoSend">
           <Icon type="social-android"></Icon>
           自动任务大厅
         </Menu-item>
@@ -92,7 +92,6 @@
     </Menu>
     <Menu mode="horizontal" class="layout-sub-menu" :active-name="$route.path" @on-select="menuRouter" v-show="menuShow('/taskAuto')">
       <div class="layout-assistant">
-        <Menu-item name="/taskAuto">自动任务</Menu-item>
         <Menu-item name="/taskAutoSend">已发任务</Menu-item>
         <Menu-item name="/taskAutoMy">我的任务</Menu-item>
         <Menu-item name="/taskAutoAdd">发布任务</Menu-item>

@@ -38,11 +38,11 @@
                         </p>
                         <p>
                           <Button-group size="small">
-                            <Button type="ghost">需要搜索</Button>
-                            <Button type="ghost">无评语</Button>
-                            <Button type="ghost">买号：1233333</Button>
-                            <Button type="ghost">QQ：222222222</Button>
-                            <Button type="ghost">旺旺：565656561415565</Button>
+                            <Button type="text">需要搜索</Button>
+                            <Button type="text">无评语</Button>
+                            <Button type="text">买号：1233333</Button>
+                            <Button type="text">QQ：222222222</Button>
+                            <Button type="text">旺旺：565656561415565</Button>
                           </Button-group>
                         </p>
                       </span>
@@ -57,9 +57,7 @@
                   <td class="">
                     <div class="ivu-table-cell">
                       <div>
-                        <button type="button" class="ivu-btn ivu-btn-warning" @click="taskFreeSearch">
-                          搜索相近商品
-                        </button>
+                         <Button>未开始</Button>
                       </div>
                     </div>
                   </td>
@@ -76,49 +74,11 @@
                         </p>
                         <p>
                           <Button-group size="small">
-                            <Button type="ghost">需要搜索</Button>
-                            <Button type="ghost">无评语</Button>
-                            <Button type="ghost">买号：1233333</Button>
-                            <Button type="ghost">QQ：222222222</Button>
-                            <Button type="ghost">旺旺：565656561415565</Button>
-                          </Button-group>
-                        </p>
-                      </span>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="ivu-table-cell">
-                      <Button type="primary" size="small">详情</Button>&nbsp;
-                      <Button type="warning" size="small">删除</Button>
-                    </div>
-                  </td>
-                  <td class="">
-                    <div class="ivu-table-cell">
-                      <div>
-                        <button type="button" class="ivu-btn ivu-btn-warning" @click="showInvite=true">
-                          查看邀请
-                        </button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr class="ivu-table-row">
-                  <td class="">
-                    <div class="ivu-table-cell">
-                      <span>
-                        <p>
-                          <Button type="text">价格：100 元</Button>
-                          <Button type="text">商品：
-                            <a href="#">撒萨达萨达萨达萨达萨达萨达撒的</a>
-                          </Button>
-                        </p>
-                        <p>
-                          <Button-group size="small">
-                            <Button type="ghost">需要搜索</Button>
-                            <Button type="ghost">无评语</Button>
-                            <Button type="ghost">买号：1233333</Button>
-                            <Button type="ghost">QQ：222222222</Button>
-                            <Button type="ghost">旺旺：565656561415565</Button>
+                            <Button type="text">需要搜索</Button>
+                            <Button type="text">无评语</Button>
+                            <Button type="text">买号：1233333</Button>
+                            <Button type="text">QQ：222222222</Button>
+                            <Button type="text">旺旺：565656561415565</Button>
                           </Button-group>
                         </p>
                       </span>
@@ -145,69 +105,6 @@
         </div>
       </div>
     </Card>
-  
-    <Modal v-model="showInvite" title="邀请记录" width="800">
-      <p>
-        <table>
-          <colgroup>
-            <col width="600">
-            <col width="150">
-          </colgroup>
-          <tbody class="ivu-table-tbody">
-            <tr>
-              <td>
-                <span>
-                  <p>
-                    <Button type="text">价格：100 元</Button>
-                    <Button type="text">商品：
-                      <a href="#">撒萨达萨达萨达萨达萨达萨达撒的</a>
-                    </Button>
-                  </p>
-                  <p>
-                    <Button-group size="small">
-                      <Button type="ghost">需要搜索</Button>
-                      <Button type="ghost">无评语</Button>
-                      <Button type="ghost">买号：1233333</Button>
-                      <Button type="ghost">QQ：222222222</Button>
-                      <Button type="ghost">旺旺：565656561415565</Button>
-                    </Button-group>
-                  </p>
-                </span>
-              </td>
-              <td>
-                <Button type="primary" size="small">接受</Button>&nbsp;
-                <Button type="warning" size="small">拒绝</Button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span>
-                  <p>
-                    <Button type="text">价格：100 元</Button>
-                    <Button type="text">商品：
-                      <a href="#">撒萨达萨达萨达萨达萨达萨达撒的</a>
-                    </Button>
-                  </p>
-                  <p>
-                    <Button-group size="small">
-                      <Button type="ghost">需要搜索</Button>
-                      <Button type="ghost">无评语</Button>
-                      <Button type="ghost">买号：1233333</Button>
-                      <Button type="ghost">QQ：222222222</Button>
-                      <Button type="ghost">旺旺：565656561415565</Button>
-                    </Button-group>
-                  </p>
-                </span>
-              </td>
-              <td>
-                <Button type="warning" size="small">撤销</Button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-  
-      </p>
-    </Modal>
   
     <Modal v-model="showOther" title="互拍详情" width="800">
       <p>

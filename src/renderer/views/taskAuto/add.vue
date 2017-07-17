@@ -32,12 +32,8 @@
         <Form-item label="好评语录">
           <Input v-model="formItem.textarea" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="填写好评评语 限制300字"></Input>
         </Form-item>
-        <Form-item label="显示时间">
-          <Radio-group v-model="formItem.radio">
-            <Radio label="male">永久</Radio>
-            <Radio label="female">固定</Radio>
-            <Date-picker type="daterange" placement="bottom-end" placeholder="选择日期" class="search-date"></Date-picker>
-          </Radio-group>
+        <Form-item label="互拍时间">
+          <Date-picker type="datetime" format="yyyy-MM-dd HH:mm" placement="top-start" placeholder="选择日期" class="search-date"></Date-picker>
         </Form-item>
         <Form-item label="备注">
           <Input v-model="formItem.textarea" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="填写其它说明或者要求 限制100字"></Input>

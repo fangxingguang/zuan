@@ -38,11 +38,11 @@
                         </p>
                         <p>
                           <Button-group size="small">
-                            <Button type="ghost">需要搜索</Button>
-                            <Button type="ghost">无评语</Button>
-                            <Button type="ghost">买号：1233333</Button>
-                            <Button type="ghost">QQ：222222222</Button>
-                            <Button type="ghost">旺旺：565656561415565</Button>
+                            <Button type="text">需要搜索</Button>
+                            <Button type="text">无评语</Button>
+                            <Button type="text">买号：1233333</Button>
+                            <Button type="text">QQ：222222222</Button>
+                            <Button type="text">旺旺：565656561415565</Button>
                           </Button-group>
                         </p>
                       </span>
@@ -76,11 +76,11 @@
                         </p>
                         <p>
                           <Button-group size="small">
-                            <Button type="ghost">需要搜索</Button>
-                            <Button type="ghost">无评语</Button>
-                            <Button type="ghost">买号：1233333</Button>
-                            <Button type="ghost">QQ：222222222</Button>
-                            <Button type="ghost">旺旺：565656561415565</Button>
+                            <Button type="text">需要搜索</Button>
+                            <Button type="text">无评语</Button>
+                            <Button type="text">买号：1233333</Button>
+                            <Button type="text">QQ：222222222</Button>
+                            <Button type="text">旺旺：565656561415565</Button>
                           </Button-group>
                         </p>
                       </span>
@@ -114,11 +114,11 @@
                         </p>
                         <p>
                           <Button-group size="small">
-                            <Button type="ghost">需要搜索</Button>
-                            <Button type="ghost">无评语</Button>
-                            <Button type="ghost">买号：1233333</Button>
-                            <Button type="ghost">QQ：222222222</Button>
-                            <Button type="ghost">旺旺：565656561415565</Button>
+                            <Button type="text">需要搜索</Button>
+                            <Button type="text">无评语</Button>
+                            <Button type="text">买号：1233333</Button>
+                            <Button type="text">QQ：222222222</Button>
+                            <Button type="text">旺旺：565656561415565</Button>
                           </Button-group>
                         </p>
                       </span>

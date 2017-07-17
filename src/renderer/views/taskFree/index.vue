@@ -38,17 +38,54 @@
                         </p>
                         <p>
                           <Button-group size="small">
-                            <Button type="ghost">需要搜索</Button>
-                            <Button type="ghost">无评语</Button>
-                            <Button type="ghost">买号：1233333</Button>
-                            <Button type="ghost">QQ：222222222</Button>
-                            <Button type="ghost">旺旺：565656561415565</Button>
+                            <Button type="text">需要搜索</Button>
+                            <Button type="text">无评语</Button>
+                            <Button type="text">买号：1233333</Button>
+                            <Button type="text">QQ：222222222</Button>
+                            <Button type="text">旺旺：565656561415565</Button>
                           </Button-group>
                         </p>
                       </span>
                     </div>
                   </td>
-                   <td>
+                  <td>
+                    <div class="ivu-table-cell">
+                      <Button type="primary" size="small">详情</Button>&nbsp;
+                    </div>
+                  </td>
+                  <td class="">
+                    <div class="ivu-table-cell">
+                      <div>
+                        <button type="button" class="ivu-btn ivu-btn-warning">
+                          邀请互拍
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="ivu-table-row">
+                  <td class="">
+                    <div class="ivu-table-cell">
+                      <span>
+                        <p>
+                          <Button type="text">价格：100 元</Button>
+                          <Button type="text">商品：
+                            <a href="#">撒萨达萨达萨达萨达萨达萨达撒的</a>
+                          </Button>
+                        </p>
+                        <p>
+                          <Button-group size="small">
+                            <Button type="text">需要搜索</Button>
+                            <Button type="text">无评语</Button>
+                            <Button type="text">买号：1233333</Button>
+                            <Button type="text">QQ：222222222</Button>
+                            <Button type="text">旺旺：565656561415565</Button>
+                          </Button-group>
+                        </p>
+                      </span>
+                    </div>
+                  </td>
+                  <td>
                     <div class="ivu-table-cell">
                       <Button type="primary" size="small">详情</Button>&nbsp;
                     </div>
@@ -68,6 +105,7 @@
           </div>
         </div>
       </div>
+  
     </Card>
   </div>
 </template>
@@ -76,7 +114,7 @@
 export default {
   data() {
     return {
-
+     
     }
   }
 }

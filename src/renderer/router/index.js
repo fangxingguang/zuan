@@ -31,10 +31,6 @@ export default new Router({
           component: require('@/views/taskFree/my'),
         },
         {
-          path: '/taskAuto',
-          component: require('@/views/taskAuto/index'),
-        },
-        {
           path: '/taskAutoAdd',
           component: require('@/views/taskAuto/add'),
         },

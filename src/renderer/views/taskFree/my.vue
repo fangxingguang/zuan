@@ -51,12 +51,12 @@
                         </p>
                         <p>
                           <Button-group size="small">
-                            <Button type="ghost">需要搜索</Button>
-                            <Button type="ghost">无评语</Button>
-                            <Button type="ghost">卖号：1233333</Button>
-                            <Button type="ghost">买号：1233333</Button>
-                            <Button type="ghost">QQ：222222222</Button>
-                            <Button type="ghost">旺旺：565656561415565</Button>
+                            <Button type="text">需要搜索</Button>
+                            <Button type="text">无评语</Button>
+                            <Button type="text">卖号：1233333</Button>
+                            <Button type="text">买号：1233333</Button>
+                            <Button type="text">QQ：222222222</Button>
+                            <Button type="text">旺旺：565656561415565</Button>
                           </Button-group>
                         </p>
                          <p>
@@ -68,13 +68,13 @@
                         </p>
                         <p>
                           <Button-group size="small">
-                            <Button type="ghost">搜索关键词：衣服</Button>
-                            <Button type="ghost">排名：第2页4个</Button>
-                            <Button type="ghost">卖号：1233333</Button>
-                            <Button type="ghost">买号：1233333</Button>
-                            <Button type="ghost">QQ：222222222</Button>
-                            <Button type="ghost">旺旺：565656561415565</Button>
-                            <Button type="ghost">评语：真不错！</Button>
+                            <Button type="text">搜索关键词：衣服</Button>
+                            <Button type="text">排名：第2页4个</Button>
+                            <Button type="text">卖号：1233333</Button>
+                            <Button type="text">买号：1233333</Button>
+                            <Button type="text">QQ：222222222</Button>
+                            <Button type="text">旺旺：565656561415565</Button>
+                            <Button type="text">评语：真不错！</Button>
                           </Button-group>
                         </p>
                       </span>
