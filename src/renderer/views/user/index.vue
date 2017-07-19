@@ -1,10 +1,21 @@
 <template>
   <div>
     <Card>
-      <p>用户名：嘎嘎嘎</p>
-      <p>账户余额：100 元
-        <Button type="primary" size="small">充值</Button>
-      </p>
+      <Card class="user-info">
+        <Row :gutter="32">
+          <Col span="2">
+          <i-circle :percent="100" stroke-color="#5cb85c" size="70">
+            <Icon type="ios-person" size="60" style="color:#5cb85c"></Icon>
+          </i-circle>
+          </Col>
+          <Col span="20">
+          <p>用户名：嘎嘎嘎</p>
+          <p>账户余额：100 元
+            <Button type="primary" size="small">充值</Button>
+          </p>
+          </Col>
+        </Row>
+      </Card>
       <br/>
       <Table :columns="columns1" :data="data1"></Table>
       <div class="page">
@@ -49,12 +60,12 @@ export default {
 </script>
 
 <style scoped>
-.search-input {
-  float: right;
-}
-
 .page {
   text-align: right;
   margin-top: 10px;
+}
+
+.user-info p {
+  line-height: 35px;
 }
 </style>

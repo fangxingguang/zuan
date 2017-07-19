@@ -1,4 +1,17 @@
 <style scoped>
+.logo {
+  float: left;
+  width: 250px;
+  padding: 0;
+  margin: 0;
+  margin-left: 20px;
+}
+
+.logo a {
+  height: 60px;
+  color: #fff;
+}
+
 .layout {
   background: #f5f7f9;
   min-width: 800px;
@@ -49,6 +62,9 @@
 <template>
   <div class="layout">
     <Menu mode="horizontal" theme="primary" :active-name="$route.path" @on-select="menuRouter">
+      <h3 class="logo">
+        <router-link to="/"><Icon type="social-snapchat-outline" style="font-size:30px;"></Icon> 钻起来 永久免费互动平台</router-link>
+      </h3>
       <div class="layout-nav">
         <Menu-item name="/">
           <Icon type="home"></Icon>
@@ -56,15 +72,15 @@
         </Menu-item>
         <Menu-item name="/taskFree">
           <Icon type="android-people"></Icon>
-          免费任务大厅
+          免费任务
         </Menu-item>
         <Menu-item name="/taskAutoSend">
           <Icon type="social-android"></Icon>
-          自动任务大厅
+          自动任务
         </Menu-item>
         <Menu-item name="/flow">
           <Icon type="stats-bars"></Icon>
-          发布收藏 | 搜索流量
+          收藏 | 搜索流量
         </Menu-item>
         <Menu-item name="/user">
           <Icon type="person"></Icon>
@@ -100,7 +116,7 @@
     <div class="layout-content">
       <router-view></router-view>
     </div>
-    <Affix :offset-bottom="5">
+    <Affix :offset-bottom="5" v-show="$route.path!='/login' && $route.path!='/register'">
       <div class="layout-copy">
         <span class="footer-set">
           <Dropdown placement="top-end" trigger="click" @on-click="setClick">

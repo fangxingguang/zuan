@@ -59,10 +59,6 @@ export default new Router({
           component: require('@/views/user/login'),
         },
         {
-          path: '/register',
-          component: require('@/views/user/register'),
-        },
-        {
           path: '/taobaoBind',
           component: require('@/views/taobao/bind'),
         }
