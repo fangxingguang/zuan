@@ -17,22 +17,22 @@
   min-width: 800px;
 }
 
-.layout-nav {
-  height: 50px;
-}
-
-.layout-assistant {
-  width: 400px;
-  margin: 0 auto;
-  height: inherit;
+.layout-header {
+  min-width: 1000px;
+  width: 100%;
+  position: absolute;
 }
 
 .layout-content {
-  min-height: 500px;
   padding: 5px;
-  overflow: hidden;
   background: #fff;
   border-radius: 4px;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
 }
 
 .layout-content-main {
@@ -43,14 +43,16 @@
   padding: 0 10px;
 }
 
-.layout-sub-menu {
-  height: 40px;
-  line-height: 40px;
-}
-
 .layout-right-menu {
   float: right;
   margin-right: 5px;
+}
+
+.layout-right-menu i {
+  font-size: 20px;
+  color: #ddd;
+  margin: 0 5px;
+  cursor: pointer;
 }
 
 .footer-set {
@@ -58,73 +60,69 @@
   right: 5px;
   bottom: 5px;
 }
+
+.ivu-menu-item-active {
+  border-bottom: 2px solid #87DBAE;
+}
 </style>
 <template>
   <div class="layout">
-    <Menu mode="horizontal" theme="primary" :active-name="$route.path" @on-select="menuRouter">
-      <h3 class="logo">
-        <router-link to="/"><Icon type="social-snapchat-outline" style="font-size:30px;"></Icon> 钻起来 永久免费互动平台</router-link>
-      </h3>
-      <div class="layout-nav">
-        <Menu-item name="/">
-          <Icon type="home"></Icon>
-          首页
-        </Menu-item>
-        <Menu-item name="/taskFree">
-          <Icon type="android-people"></Icon>
-          免费任务
-        </Menu-item>
-        <Menu-item name="/taskAutoSend">
-          <Icon type="social-android"></Icon>
-          自动任务
-        </Menu-item>
-        <Menu-item name="/flow">
-          <Icon type="stats-bars"></Icon>
-          收藏 | 搜索流量
-        </Menu-item>
-        <Menu-item name="/user">
-          <Icon type="person"></Icon>
-          会员中心 | 充值
-        </Menu-item>
-        <Menu-item name="/express">
-          <Icon type="android-mail"></Icon>
-          空包单号
-        </Menu-item>
-  
-        <div class="layout-right-menu">
-          <router-link to="/login">
-            <Button>登录</Button>
-          </router-link>
+    <div class="layout-header">
+      <Menu mode="horizontal" theme="primary" :active-name="$route.path" @on-select="menuRouter">
+        <h3 class="logo" style="-webkit-app-region: drag">
+          <router-link to="/index">
+            <Icon type="social-snapchat-outline" style="font-size:30px;"></Icon> 钻起来 永久免费互动平台</router-link>
+        </h3>
+        <div>
+          <Menu-item name="/index">
+            <Icon type="home"></Icon>
+            首页
+          </Menu-item>
+          <Menu-item name="/taskFree">
+            <Icon type="android-people"></Icon>
+            免费任务
+          </Menu-item>
+          <Menu-item name="/taskAuto">
+            <Icon type="social-android"></Icon>
+            自动任务
+          </Menu-item>
+          <Menu-item name="/flow">
+            <Icon type="stats-bars"></Icon>
+            收藏 | 搜索流量
+          </Menu-item>
+          <Menu-item name="/express">
+            <Icon type="android-mail"></Icon>
+            空包单号
+          </Menu-item>
+          <Menu-item name="/user">
+            <Icon type="person"></Icon>
+            会员中心
+          </Menu-item>
+          <div class="layout-right-menu">
+            <span @click="sendToMain('winMin')">
+              <Icon type="minus"></Icon>
+            </span>
+            <span @click="sendToMain('winMax')">
+              <Icon type="arrow-expand"></Icon>
+            </span>
+            <span @click="sendToMain('winClose')">
+              <Icon type="android-close"></Icon>
+            </span>
+          </div>
         </div>
-      </div>
-    </Menu>
-    <Menu mode="horizontal" class="layout-sub-menu" :active-name="$route.path" @on-select="menuRouter" v-show="menuShow('/taskFree')">
-      <div class="layout-assistant">
-        <Menu-item name="/taskFree">免费任务</Menu-item>
-        <Menu-item name="/taskFreeSend">已发任务</Menu-item>
-        <Menu-item name="/taskFreeMy">我的任务</Menu-item>
-        <Menu-item name="/taskFreeAdd">发布任务</Menu-item>
-      </div>
-    </Menu>
-    <Menu mode="horizontal" class="layout-sub-menu" :active-name="$route.path" @on-select="menuRouter" v-show="menuShow('/taskAuto')">
-      <div class="layout-assistant">
-        <Menu-item name="/taskAutoSend">已发任务</Menu-item>
-        <Menu-item name="/taskAutoMy">我的任务</Menu-item>
-        <Menu-item name="/taskAutoAdd">发布任务</Menu-item>
-      </div>
-    </Menu>
+      </Menu>
+    </div>
     <div class="layout-content">
       <router-view></router-view>
     </div>
-    <Affix :offset-bottom="5" v-show="$route.path!='/login' && $route.path!='/register'">
+    <Affix :offset-bottom="5">
       <div class="layout-copy">
         <span class="footer-set">
-          <Dropdown placement="top-end" trigger="click" @on-click="setClick">
-            <Button type="primary" icon="gear-b" shape="circle">设置</Button>
+          <Dropdown placement="top-end" trigger="click" @on-click="toolsClick">
+            <Button type="primary" icon="help-circled" shape="circle">帮助</Button>
             <Dropdown-menu slot="list">
-              <Dropdown-item name="taobaoBind">绑定账号</Dropdown-item>
-              <Dropdown-item divided>充值</Dropdown-item>
-              <Dropdown-item divided>联系客服</Dropdown-item>
+              <Dropdown-item name="help">联系客服</Dropdown-item>
+              <Dropdown-item name="debug">调试工具</Dropdown-item>
             </Dropdown-menu>
           </Dropdown>
         </span>
@@ -134,8 +132,13 @@
 </template>
 
 <script>
+const ipcRenderer = require('electron').ipcRenderer;
 export default {
   name: 'layout',
+  data() {
+    return {
+    }
+  },
   computed: {
 
   },
@@ -143,11 +146,13 @@ export default {
     menuRouter(name) {
       this.$router.push({ path: name });
     },
-    menuShow(key) {
-      return this.$route.path.indexOf(key) == 0;
+    toolsClick(name) {
+      if (name == 'debug') {
+        ipcRenderer.send('ipc', 'debug');
+      }
     },
-    setClick(name) {
-      this.$router.push({ path: name });
+    sendToMain($cmd) {
+      ipcRenderer.send('ipc', $cmd);
     }
   }
 }

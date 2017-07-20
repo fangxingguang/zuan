@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, dialog } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -20,9 +20,10 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     useContentSize: true,
     width: 1000,
-    height: 800,
+    height: 700,
     minWidth: 1000,
-    minHeight: 800
+    minHeight: 700,
+    frame: false
   })
 
   mainWindow.loadURL(winURL)
@@ -45,6 +46,34 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+const ipcMain = require('electron').ipcMain;
+ipcMain.on('ipc', function (event, arg) {
+  if (arg == 'winMin') {
+    mainWindow.minimize();
+  } else if (arg == 'winMax') {
+    if (mainWindow.isMaximized()) {
+      mainWindow.restore()
+    } else {
+      mainWindow.maximize();
+    }
+  } else if (arg == 'winClose') {
+    const options = {
+      type: 'info',
+      title: '信息',
+      message: "确认退出软件？",
+      buttons: ['是', '否'],
+      cancelId: 2
+    }
+    dialog.showMessageBox(options, function (index) {
+      if (index == 0) {
+        mainWindow.close();
+      }
+    })
+  } else if (arg == 'debug') {
+    mainWindow.webContents.openDevTools();
+  }
+});
 
 /**
  * Auto Updater

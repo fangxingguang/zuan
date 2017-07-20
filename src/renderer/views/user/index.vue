@@ -8,11 +8,21 @@
             <Icon type="ios-person" size="60" style="color:#5cb85c"></Icon>
           </i-circle>
           </Col>
-          <Col span="20">
+          <Col span="12">
           <p>用户名：嘎嘎嘎</p>
           <p>账户余额：100 元
             <Button type="primary" size="small">充值</Button>
           </p>
+          </Col>
+          <Col span="6">
+          <router-link to="/taobaoBind">
+            <Button type="primary">绑定淘宝账号</Button>
+          </router-link>
+          </Col>
+          <Col span="4">
+          <router-link to="/">
+            <Button type="primary">登录</Button>
+          </router-link>
           </Col>
         </Row>
       </Card>

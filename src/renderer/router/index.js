@@ -12,6 +12,10 @@ export default new Router({
       children: [
         {
           path: '/',
+          component: require('@/views/user/login'),
+        },
+        {
+          path: '/index',
           component: require('@/views/index/index'),
         },
         {
@@ -19,28 +23,8 @@ export default new Router({
           component: require('@/views/taskFree/index'),
         },
         {
-          path: '/taskFreeAdd',
-          component: require('@/views/taskFree/add'),
-        },
-        {
-          path: '/taskFreeSend',
-          component: require('@/views/taskFree/send'),
-        },
-        {
-          path: '/taskFreeMy',
-          component: require('@/views/taskFree/my'),
-        },
-        {
-          path: '/taskAutoAdd',
-          component: require('@/views/taskAuto/add'),
-        },
-        {
-          path: '/taskAutoSend',
-          component: require('@/views/taskAuto/send'),
-        },
-        {
-          path: '/taskAutoMy',
-          component: require('@/views/taskAuto/my'),
+          path: '/taskAuto',
+          component: require('@/views/taskAuto/index'),
         },
         {
           path: '/flow',
@@ -53,10 +37,6 @@ export default new Router({
         {
           path: '/express',
           component: require('@/views/express/index'),
-        },
-        {
-          path: '/login',
-          component: require('@/views/user/login'),
         },
         {
           path: '/taobaoBind',
