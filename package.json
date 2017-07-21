@@ -17,7 +17,7 @@
     "postinstall": ""
   },
   "build": {
-    "productName": "electron-vue",
+    "productName": "钻起来",
     "appId": "org.simulatedgreg.electron-vue",
     "directories": {
       "output": "build"
@@ -44,7 +44,8 @@
       "icon": "build/icons/icon.icns"
     },
     "win": {
-      "icon": "build/icons/icon.ico"
+      "icon": "build/icons/icon.ico",
+      "target": ["portable"]
     },
     "linux": {
       "icon": "build/icons"
