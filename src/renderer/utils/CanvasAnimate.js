@@ -1,5 +1,5 @@
 function CanvasAnimate(Dom, options) {
-    Dom.width = window.innerWidth - 10;
+    Dom.width = window.innerWidth ;
     Dom.height = window.innerHeight - 100;
     options = options || {}
     this.Element = Dom

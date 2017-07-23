@@ -3,25 +3,36 @@
     <Card>
       <Card class="user-info">
         <Row :gutter="32">
-          <Col span="2">
+          <Col span="3" style="width:100px;">
           <i-circle :percent="100" stroke-color="#5cb85c" size="70">
             <Icon type="ios-person" size="60" style="color:#5cb85c"></Icon>
           </i-circle>
           </Col>
-          <Col span="12">
-          <p>用户名：嘎嘎嘎</p>
-          <p>账户余额：100 元
-            <Button type="primary" size="small">充值</Button>
+          <Col span="16">
+          <p>
+            <span style="margin-right:20px;">
+              用户名：嘎嘎嘎
+            </span>
+            <span>
+             <a href="javascript:void(0)">查看完善用户资料</a>
+            </span>
+          </p>
+          <p>
+            <span style="margin-right:20px;">
+              账户余额：100 元
+              <Button type="primary" size="small">充值</Button>
+              <Button type="primary" size="small">提现</Button>
+            </span>
+            <span>
+              发布点：100 克拉
+              <Button type="primary" size="small">购买发布点</Button>
+              <Button type="primary" size="small">发布点兑现</Button>
+            </span>
           </p>
           </Col>
-          <Col span="6">
+          <Col span="5">
           <router-link to="/taobaoBind">
             <Button type="primary">绑定淘宝账号</Button>
-          </router-link>
-          </Col>
-          <Col span="4">
-          <router-link to="/">
-            <Button type="primary">登录</Button>
           </router-link>
           </Col>
         </Row>

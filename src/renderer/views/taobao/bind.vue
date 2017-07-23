@@ -2,14 +2,40 @@
   <div>
     <Card>
       <Row>
-        <Col span="20">
-        <webview src="https://login.taobao.com" disablewebsecurity plugins style="height:500px;" id="taobao" :preload="preload"></webview>
+        <Col span="18">
+        <webview src="https://login.taobao.com" disablewebsecurity plugins style="height:580px;" id="taobao" :preload="preload"></webview>
         </Col>
-        <Col span="4">
-        <Button @click="test">显示登录框</Button>
+        <Col span="6">
+        <!-- <Button @click="test2">获取账号密码</Button> -->
+        <Card :bordered="false">
+          <p slot="title">绑定卖家账号</p>
+          <p>
+            <Input style="width:140px;"></Input>
+            <Button type="primary">绑定</Button>
+          </p>
+          <br/>
+          <p>
+            <Tag closable color="blue">卖家账号2</Tag>
+            <Tag closable color="blue">卖家账号2</Tag>
+          </p>
+        </Card>
+        <Card :bordered="false">
+          <p slot="title">绑定买家账号</p>
+          <p>
+            <Input style="width:140px;" placeholder="账号"></Input>
+          </p>
+          <p>
+            <Input type="password" style="width:140px;" placeholder="自动任务请输入密码"></Input>
+            <Button type="primary">绑定</Button>
+          </p>
+          <br/>
+          <p>
+            <Tag closable color="blue">买家账号2</Tag>
+            <Tag closable color="blue">买家账号2</Tag>
+          </p>
+        </Card>
         </Col>
       </Row>
-  
     </Card>
   </div>
 </template>
@@ -20,30 +46,24 @@ export default {
   data() {
     return {
       webview: '',
-      preload: `file://${path.join(__static, '/js/inject.js')}`
+      preload: `file:${path.resolve(__dirname, '../../utils/preload.js')}`
     }
   },
-  created: function () {
-    this.loadJquery();
+  mounted: function () {
+    this.loadReady();
   },
   methods: {
-    loadJquery() {
-      var _this = this;
-      setTimeout(function () {
-        _this.webview = document.getElementById("taobao");
-        //_this.webview.openDevTools();
-      }, 10)
-    },
-    test() {
-      var js = `
-        window.scrollTo(400,200);
-        $("#J_Quick2Static").click();
-        // $("#TPL_username_1").val("fangxingguang");
-        // $("#TPL_password_1").val("");
-        // $("#J_SubmitStatic").click();
-      `;
-      this.webview.executeJavaScript(js, true, function () {
+    loadReady() {
+      this.webview = document.getElementById("taobao");
+      this.webview.addEventListener("dom-ready", function () {
+        //this.openDevTools();
+        this.addEventListener('ipc-message', function (event) {
+          console.log(event.args);
+        });
       });
+    },
+    test2() {
+      this.webview.send('ping','aaaaa');
     }
   }
 }

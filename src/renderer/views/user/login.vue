@@ -13,11 +13,15 @@
         opacity: .95;
         border: 1px solid #dedede;
     }
+     .myCanvas{
+        height:100%;
+        width: 100%;
+      }
 </style>
 
 <template>
     <div>
-        <canvas ref="renderCanvas"></canvas>
+        <canvas ref="renderCanvas" class="myCanvas"></canvas>
         <Card class="content-card" v-if="type=='login'">
             <p slot="title">
                 <Icon type="person"></Icon>

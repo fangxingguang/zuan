@@ -7,9 +7,18 @@
 .layout-main-menu {
   display: block;
 }
-.layout-right-tools{
+
+.layout-right-tools {
   color: #fff;
+  float: right;
+  margin: 2px 20px 0 0;
+  -webkit-app-region: no-drag;
 }
+
+.layout-right-tools label {
+  margin: 0 5px;
+}
+
 .logo {
   float: left;
   width: 250px;
@@ -33,6 +42,7 @@
   width: 100%;
   position: absolute;
   background: #2d8cf0;
+  -webkit-app-region: drag;
 }
 
 .layout-content {
@@ -53,11 +63,13 @@
 
 .ivu-menu-item {
   padding: 0 10px !important;
+  -webkit-app-region: no-drag;
 }
 
 .layout-right-menu {
   float: right;
   margin-right: 5px;
+  -webkit-app-region: no-drag;
 }
 
 .layout-right-menu i {
@@ -76,25 +88,37 @@
 .ivu-menu-item-active {
   border-bottom: 2px solid #87DBAE;
 }
+
+.right-menu-list {
+  -webkit-app-region: no-drag;
+  padding: 5px;
+  cursor: pointer;
+}
 </style>
 <template>
   <div class="layout">
     <div class="layout-header">
       <div class="layout-top-menu">
         <Row>
-          <Col span="8" style="-webkit-app-region: drag">
+          <Col span="8">
           <h3 class="logo">
             <router-link to="/index">
               <Icon type="social-snapchat-outline" style="font-size:20px;"></Icon> 钻起来 永久免费互动平台</router-link>
           </h3>
           </Col>
-          <Col span="8" style="-webkit-app-region: drag">&nbsp;</Col>
-          <Col span="8">
-          <span class="layout-right-tools">
-            <label>用户名：fangxingguang</label>&nbsp;
-            <label>余额：1000</label>
-          </span>
+          <Col span="16">
           <div class="layout-right-menu">
+            <span>
+              <Dropdown trigger="click" @on-click="rightMenuClick">
+                <a href="javascript:void(0)">
+                  <Icon type="arrow-down-b"></Icon>
+                </a>
+                <Dropdown-menu slot="list">
+                  <Dropdown-item class="right-menu-list" name="logout">
+                    <Icon type="log-out" style="font-size:12px;color:red;"></Icon> 退出</Dropdown-item>
+                </Dropdown-menu>
+              </Dropdown>
+            </span>
             <span @click="sendToMain('winMin')">
               <Icon type="minus"></Icon>
             </span>
@@ -105,6 +129,11 @@
               <Icon type="android-close"></Icon>
             </span>
           </div>
+          <span class="layout-right-tools">
+            <label>用户名：fangxingguang</label>&nbsp;
+            <label>余额：1000 元</label>
+            <label>发布点：100 克拉</label>
+          </span>
           </Col>
         </Row>
       </div>
@@ -149,7 +178,7 @@
             <Button type="primary" icon="help-circled" shape="circle">帮助</Button>
             <Dropdown-menu slot="list">
               <Dropdown-item name="help">联系客服</Dropdown-item>
-              <Dropdown-item name="debug">调试工具</Dropdown-item>
+              <!-- <Dropdown-item name="debug">调试工具</Dropdown-item> -->
             </Dropdown-menu>
           </Dropdown>
         </span>
@@ -159,7 +188,6 @@
 </template>
 
 <script>
-const ipcRenderer = require('electron').ipcRenderer;
 export default {
   name: 'layout',
   data() {
@@ -175,11 +203,16 @@ export default {
     },
     toolsClick(name) {
       if (name == 'debug') {
-        ipcRenderer.send('ipc', 'debug');
+        this.$electron.ipcRenderer.send('ipc', 'debug');
       }
     },
     sendToMain($cmd) {
-      ipcRenderer.send('ipc', $cmd);
+      this.$electron.ipcRenderer.send('ipc', $cmd);
+    },
+    rightMenuClick(name) {
+      if (name == 'logout') {
+        this.$router.push({ path: '/' });
+      }
     }
   }
 }

@@ -19,87 +19,80 @@
         </Col>
       </Row>
       <br/>
-      <div class="ivu-table-wrapper">
-        <div class="ivu-table">
-          <div class="ivu-table-body">
-            <table cellspacing="0" cellpadding="0" border="0">
-              <colgroup>
-                <col>
-              </colgroup>
-              <tbody class="ivu-table-tbody">
-                <tr class="ivu-table-row">
-                  <td class="">
-                    <div class="ivu-table-cell">
-                      <span>
-                        <p>
-                          <Button type="text">任务编号：2017071612401122</Button>
-                          <Button type="text">状态：</Button>
-                          <Radio-group type="button" size="small">
-                              <Radio label="已拍下"></Radio>
-                              <Radio label="已付款"></Radio>
-                              <Radio label="已完成"></Radio>
-                              <Radio label="已退款"></Radio>
-                          </Radio-group>
-                          （自行标注不影响任务进程）
-                        </p>
-                        <p>
-                          <Badge count="我的"></Badge>
-                          <Button type="text">价格：100 元</Button>
-                          <Button type="text">商品：
-                            <a href="#">撒萨达萨达萨达萨达萨达萨达撒的</a>
-                          </Button>
-                        </p>
-                        <p>
-                          <Button-group size="small">
-                            <Button type="text">需要搜索</Button>
-                            <Button type="text">无评语</Button>
-                            <Button type="text">卖号：1233333</Button>
-                            <Button type="text">买号：1233333</Button>
-                            <Button type="text">QQ：222222222</Button>
-                            <Button type="text">旺旺：565656561415565</Button>
-                          </Button-group>
-                        </p>
-                         <p>
-                          <Badge count="对方"></Badge>
-                          <Button type="text">价格：100 元</Button>
-                          <Button type="text">商品：
-                            <a href="#">撒萨达萨达萨达萨达萨达萨达撒的</a>
-                          </Button>
-                        </p>
-                        <p>
-                          <Button-group size="small">
-                            <Button type="text">搜索关键词：衣服</Button>
-                            <Button type="text">排名：第2页4个</Button>
-                            <Button type="text">卖号：1233333</Button>
-                            <Button type="text">买号：1233333</Button>
-                            <Button type="text">QQ：222222222</Button>
-                            <Button type="text">旺旺：565656561415565</Button>
-                            <Button type="text">评语：真不错！</Button>
-                          </Button-group>
-                        </p>
-                      </span>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ivu-table-tip" style="display: none;">
-            <table cellspacing="0" cellpadding="0" border="0">
-              <tbody>
-                <tr>
-                  <td>
-                    <span>暂无筛选结果</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!---->
-          <!---->
-          <!---->
-        </div>
-      </div>
+      <Card>
+        <Row>
+          <Col span="5">
+          <Button type="text">任务编号：2017071612401122</Button>
+          </Col>
+          <Col span="19">
+          <p>
+            <Button type="text">我：</Button>
+            <Radio-group type="button" size="small">
+              <Radio label="已拍下"></Radio>
+              <Radio label="已付款"></Radio>
+              <Radio label="已发货"></Radio>
+              <Radio label="已完成"></Radio>
+              <Radio label="已退款"></Radio>
+            </Radio-group>
+            （自行标注不影响任务进程）
+          </p>
+          <p>
+            <Button type="text">他：</Button>
+            <Radio-group type="button" size="small">
+              <Radio label="已拍下"></Radio>
+              <Radio label="已付款"></Radio>
+              <Radio label="已发货"></Radio>
+              <Radio label="已完成"></Radio>
+              <Radio label="已退款"></Radio>
+            </Radio-group>
+          </p>
+          </Col>
+        </Row>
+        <Row>
+          <Col span="24">
+          <Badge count="我的"></Badge>
+          <Button type="text">价格：100 元</Button>
+          <Button type="text">商品：
+            <a href="#">撒萨达萨达萨达萨达萨达萨达撒的</a>
+          </Button>
+          </Col>
+        </Row>
+        <Row>
+          <Col span="24">
+          <Button-group size="small">
+            <Button type="text">需要搜索</Button>
+            <Button type="text">无评语</Button>
+            <Button type="text">卖号：1233333</Button>
+            <Button type="text">买号：1233333</Button>
+            <Button type="text">QQ：222222222</Button>
+            <Button type="text">旺旺：565656561415565</Button>
+          </Button-group>
+          </Col>
+        </Row>
+        <Row>
+          <Col span="24">
+          <Badge count="对方"></Badge>
+          <Button type="text">价格：100 元</Button>
+          <Button type="text">商品：
+            <a href="#">撒萨达萨达萨达萨达萨达萨达撒的</a>
+          </Button>
+          </Col>
+        </Row>
+        <Row>
+          <Col span="24">
+          <Button-group size="small">
+            <Button type="text">搜索关键词：衣服</Button>
+            <Button type="text">排名：第2页4个</Button>
+            <Button type="text">卖号：1233333</Button>
+            <Button type="text">买号：1233333</Button>
+            <Button type="text">QQ：222222222</Button>
+            <Button type="text">旺旺：565656561415565</Button>
+            <Button type="text">评语：真不错！</Button>
+          </Button-group>
+          </Col>
+        </Row>
+      </Card>
+  
     </Card>
   </div>
 </template>

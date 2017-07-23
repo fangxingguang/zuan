@@ -132,9 +132,7 @@
                   <td class="">
                     <div class="ivu-table-cell">
                       <div>
-                        <button type="button" class="ivu-btn ivu-btn-warning" @click="showOther=true">
-                          互拍详情
-                        </button>
+                       
                       </div>
                     </div>
                   </td>
