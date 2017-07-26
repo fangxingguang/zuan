@@ -178,7 +178,7 @@
             <Button type="primary" icon="help-circled" shape="circle">帮助</Button>
             <Dropdown-menu slot="list">
               <Dropdown-item name="help">联系客服</Dropdown-item>
-              <!-- <Dropdown-item name="debug">调试工具</Dropdown-item> -->
+               <Dropdown-item name="debug">调试工具</Dropdown-item> 
             </Dropdown-menu>
           </Dropdown>
         </span>

@@ -47,6 +47,14 @@ export default {
     return {
 
     }
+  },
+  mounted: function () {
+    this.test();
+  },
+  methods: {
+    test() {
+      this.$http.get('');
+    }
   }
 }
 </script>
