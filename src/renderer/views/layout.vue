@@ -108,7 +108,7 @@
           </Col>
           <Col span="16">
           <div class="layout-right-menu">
-            <span>
+            <span v-show="isLogin">
               <Dropdown trigger="click" @on-click="rightMenuClick">
                 <a href="javascript:void(0)">
                   <Icon type="arrow-down-b"></Icon>
@@ -129,10 +129,10 @@
               <Icon type="android-close"></Icon>
             </span>
           </div>
-          <span class="layout-right-tools">
-            <label>用户名：fangxingguang</label>&nbsp;
-            <label>余额：1000 元</label>
-            <label>发布点：100 克拉</label>
+          <span class="layout-right-tools" v-show="isLogin">
+            <label>用户名：{{userInfo.name}}</label>&nbsp;
+            <label>余额：{{userInfo.amount}} 元</label>
+            <label>发布点：{{userInfo.point}} 克拉</label>
           </span>
           </Col>
         </Row>
@@ -178,7 +178,7 @@
             <Button type="primary" icon="help-circled" shape="circle">帮助</Button>
             <Dropdown-menu slot="list">
               <Dropdown-item name="help">联系客服</Dropdown-item>
-               <Dropdown-item name="debug">调试工具</Dropdown-item> 
+              <Dropdown-item name="debug">调试工具</Dropdown-item>
             </Dropdown-menu>
           </Dropdown>
         </span>
@@ -192,10 +192,19 @@ export default {
   name: 'layout',
   data() {
     return {
+      isLogin: false
     }
   },
   computed: {
-
+    userInfo() {
+      var userInfo = this.$store.state.user.userInfo;
+      if (userInfo == '') {
+        this.isLogin = false;
+      } else {
+        this.isLogin = true;
+      }
+      return userInfo;
+    }
   },
   methods: {
     menuRouter(name) {
@@ -211,6 +220,7 @@ export default {
     },
     rightMenuClick(name) {
       if (name == 'logout') {
+        this.$store.dispatch('SIGNOUT');
         this.$router.push({ path: '/' });
       }
     }
@@ -227,5 +237,14 @@ export default {
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+.list-line {
+  display: inline-block;
+}
+
+.list-page {
+  text-align: right;
+  margin: 5px 0;
 }
 </style>

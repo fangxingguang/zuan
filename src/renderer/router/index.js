@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '@/store'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -45,3 +46,12 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach(({ meta, path }, from, next) => {
+  if (!store.state.user.userInfo && path !== '/') {
+    return next({ path: '/' })
+  }
+  next()
+})
+
+export default router;

@@ -17,6 +17,9 @@
         height:100%;
         width: 100%;
       }
+      .image-code{
+          cursor:pointer;
+      }
 </style>
 
 <template>
@@ -38,13 +41,13 @@
                         <Icon type="ios-person-outline" slot="prepend"></Icon>
                         </Input>
                     </Form-item>
-                    <Form-item prop="password">
-                        <Input type="password" size="large" v-model="loginForm.password" placeholder="密码">
+                    <Form-item prop="pwd">
+                        <Input type="password" size="large" v-model="loginForm.pwd" placeholder="密码" @on-enter="loginSubmit('loginForm')">
                         <Icon type="ios-locked-outline" slot="prepend"></Icon>
                         </Input>
                     </Form-item>
                     <Form-item>
-                        <Button type="primary" size="large" @click="loginSubmit('loginForm')">登录</Button>
+                        <Button type="primary" size="large" @click="loginSubmit" :loading="loading">登录</Button>
                     </Form-item>
                 </Form>
             </div>
@@ -65,18 +68,19 @@
                         <Icon type="ios-person-outline" slot="prepend"></Icon>
                         </Input>
                     </Form-item>
-                    <Form-item prop="password">
-                        <Input type="password" size="large" v-model="registerForm.password" placeholder="密码">
+                    <Form-item prop="pwd">
+                        <Input type="password" size="large" v-model="registerForm.pwd" placeholder="密码">
                         <Icon type="ios-locked-outline" slot="prepend"></Icon>
                         </Input>
                     </Form-item>
                     <Form-item prop="code">
-                        <Input type="text" v-model="registerForm.code" placeholder="验证码" style="width:100px;">
+                        <Input type="text" v-model="registerForm.code" placeholder="验证码" style="width:150px;float:left;">
                         <Icon type="image" slot="prepend"></Icon>
                         </Input>
+                        <img :src="imageCode" class="image-code" @click="refreshImageCode"></img>
                     </Form-item>
                     <Form-item>
-                        <Button type="primary" size="large" @click="registerSubmit('registerForm')">注册</Button>
+                        <Button type="primary" size="large" @click="registerSubmit">注册</Button>
                     </Form-item>
                 </Form>
             </div>
@@ -91,47 +95,61 @@ export default {
             type: 'login',
             loginForm: {
                 name: '',
-                password: ''
+                pwd: ''
             },
             registerForm: {
                 name: '',
-                password: '',
+                pwd: '',
                 code: ''
             },
             rules: {
                 name: [
                     { required: true, message: '请填写用户名', trigger: 'blur' }
                 ],
-                password: [
+                pwd: [
                     { required: true, message: '请填写密码', trigger: 'blur' },
-                    { type: 'string', min: 6, message: '密码长度不能小于6位', trigger: 'blur' }
+                    { type: 'string', min: 3, message: '密码长度不能小于3位', trigger: 'blur' }
                 ],
                 code: [
                     { required: true, message: '请填写验证码', trigger: 'blur' }
                 ],
-            }
+            },
+            imageCode: window.api + 'imageCode',
+            loading: false
         }
     },
     mounted() {
         this.canvas();
     },
     methods: {
-        loginSubmit(name) {
-            this.$refs[name].validate((valid) => {
+        loginSubmit() {
+            this.$refs['loginForm'].validate((valid) => {
                 if (valid) {
-                    this.$http.post('login', loginForm).then((response) => {
-                        console.log(response);
-                        this.$Message.success('提交成功!');
+                    this.loading = true;
+                    this.$http.post('login', this.loginForm).then((res) => {
+                        this.loading = false;
+                        if (res.code == 200) {
+                            this.$store.dispatch('SIGNIN', res.data);
+                            this.$Message.success('登陆成功!');
+                            this.$router.push('/index');
+                        } else {
+                            this.$Message.error(res.msg);
+                        }
                     });
                 }
             })
         },
-        registerSubmit(name) {
-            this.$refs[name].validate((valid) => {
+        registerSubmit() {
+            this.$refs['registerForm'].validate((valid) => {
                 if (valid) {
-                    this.$http.post('register', loginForm).then((response) => {
-                        console.log(response);
-                        this.$Message.success('提交成功!');
+                    this.$http.post('register', this.registerForm).then((res) => {
+                        if (res.code == 200) {
+                            this.$store.dispatch('SIGNIN', res.data);
+                            this.$Message.success('注册成功!');
+                            this.$router.push('/index');
+                        } else {
+                            this.$Message.error(res.msg);
+                        }
                     });
                 }
             })
@@ -143,6 +161,9 @@ export default {
             const renderCanvas = this.$refs.renderCanvas;
             var canvas = new CanvasAnimate(renderCanvas, { length: 60, clicked: true, moveon: true })
             canvas.Run() // 开始运行
+        },
+        refreshImageCode() {
+            this.imageCode = window.api + 'imageCode?r=' + Math.random();
         }
     }
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <Card>
-      <Tabs type="card">
+      <Tabs type="card" v-model="tabIndex" @on-click="tabClick">
         <Tab-pane label="免费任务">
           <list></list>
         </Tab-pane>
@@ -27,7 +27,17 @@ import my from './my';
 export default {
   data() {
     return {
-
+      listSearchPrice: ''
+    }
+  },
+  computed: {
+    tabIndex() {
+      return this.$store.state.task.freeTaskTabIndex;
+    }
+  },
+  methods: {
+    tabClick(name) {
+      this.$store.dispatch('changeState', { freeTaskTabIndex: name });
     }
   },
   components: {
