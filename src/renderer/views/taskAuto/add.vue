@@ -135,18 +135,18 @@ export default {
     }
   },
   created: function() {
-    this.getUserInfo();
+    this.taobaoSelect();
   },
   methods: {
-    getUserInfo() {
-      this.$http.get('getUserInfo').then((res) => {
+    taobaoSelect() {
+      this.$http.get('taobaoSelect').then((res) => {
         if (res.code == 200) {
-          var userInfo = res.data;
-          if (userInfo.seller) {
-            this.sellerList = JSON.parse(userInfo.seller);
+          var taobao = res.data;
+          if (taobao.seller) {
+            this.sellerList = taobao.seller;
           }
-          if (userInfo.buyer) {
-            this.buyerList = JSON.parse(userInfo.buyer);
+          if (taobao.buyer) {
+            this.buyerList = taobao.buyer;
           }
         }
       });
