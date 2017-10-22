@@ -13,7 +13,8 @@
           </Select>
         </Form-item>
         <Form-item label="宝贝链接" prop="url">
-          <Input v-model="formItem.url" placeholder=""></Input>
+          <Input v-model="formItem.url" placeholder="" style="width:280px;"></Input>
+          <Button @click="getProduct()">选择商品</Button>
         </Form-item>
         <Form-item label="商品名称" prop="name">
           <Input v-model="formItem.name" placeholder=""></Input>
@@ -24,12 +25,6 @@
         <Form-item label="联系QQ" prop="qq">
           <Input v-model="formItem.qq" placeholder="请填写常用在线QQ，互拍前需要相互联系"></Input>
         </Form-item>
-        <Form-item label="搜索关键词" prop="search_key">
-          <Input v-model="formItem.search_key" placeholder="填写要搜索的关键词"></Input>
-        </Form-item>
-        <Form-item label="排名" prop="rank">
-          <Input v-model="formItem.rank" placeholder="备注宝贝排在第几页第几位等信息"></Input>
-        </Form-item>
         <Form-item label="好评语录" prop="comment">
           <Input v-model="formItem.comment" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="填写好评评语 限制300字"></Input>
         </Form-item>
@@ -37,10 +32,7 @@
           <Date-picker type="datetime" format="yyyy-MM-dd HH:mm" placement="top-start" placeholder="选择日期" class="search-date" @on-change="timeChange"></Date-picker>
           <Button type="dashed" @click="timeAdd" icon="plus-round">添加</Button>
           <p>
-            <Tag type="border" closable v-for="time in timeList">{{time}}</Tag>
-            <Tag type="border" closable>2017-07-23 10:00</Tag>
-            <Tag type="border" closable>2017-07-23 10:00</Tag>
-            <Tag type="border" closable>2017-07-23 10:00</Tag>
+            <Tag type="border" closable @on-close="timeDelete" v-for="time in timeList">{{time}}</Tag>
           </p>
         </Form-item>
         <Form-item label="备注" prop="remark">
@@ -48,8 +40,7 @@
         </Form-item>
         <Form-item label="消耗克拉">
           <Button type="dashed">商品：10</Button>+
-          <Button type="dashed">关键词：20</Button>+
-          <Button type="dashed">好评：30</Button> = 50 克拉
+          <Button type="dashed">好评：30</Button> = 40 克拉
         </Form-item>
         <Form-item>
           <Button type="primary" @click="submit">提交</Button>
@@ -64,6 +55,7 @@
 </template>
 
 <script>
+import { bus } from '@/utils/bus.js'
 export default {
   data() {
     var validateTime = (rule, value, callback) => {
@@ -84,11 +76,10 @@ export default {
         name: '',
         price: '',
         qq: '',
-        search_key: '',
-        rank: '',
         comment: '',
-        time: ['2016-01-01', '2016-02-15'],
-        remark: ''
+        time: [],
+        remark: '',
+        condition: ''
       },
       time: '',
       timeList: [],
@@ -112,12 +103,6 @@ export default {
         qq: [
           { required: true, message: '必填', trigger: 'blur' }
         ],
-        search_key: [
-          { required: true, message: '必填', trigger: 'blur' }
-        ],
-        rank: [
-          { required: true, message: '必填', trigger: 'blur' }
-        ],
         comment: [
           { required: true, message: '必填', trigger: 'blur' },
           { type: 'string', max: 300, message: '长度不能大于300位', trigger: 'blur' }
@@ -136,6 +121,12 @@ export default {
   },
   created: function() {
     this.taobaoSelect();
+    bus.$on('productSelect', (data) => {
+      this.formItem.name = data.name;
+      this.formItem.image = data.image;
+      this.formItem.price = data.price;
+      this.formItem.condition = data.selectIndex;
+    })
   },
   methods: {
     taobaoSelect() {
@@ -160,6 +151,10 @@ export default {
         this.timeList.push(this.time);
       }
     },
+    timeDelete(event, name) {
+      const index = this.timeList.indexOf(name);
+      this.timeList.splice(index, 1);
+    },
     submit() {
       this.$refs['taskForm'].validate((valid) => {
         if (valid) {
@@ -176,6 +171,9 @@ export default {
           });
         }
       })
+    },
+    getProduct() {
+      taobao.getProduct(this.formItem.url);
     }
   }
 }

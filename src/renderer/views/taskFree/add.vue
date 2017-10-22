@@ -13,7 +13,8 @@
           </Select>
         </Form-item>
         <Form-item label="宝贝链接" prop="url">
-          <Input v-model="formItem.url" placeholder=""></Input>
+          <Input v-model="formItem.url" placeholder="" style="width:280px;"></Input>
+          <Button @click="getProduct()">选择商品</Button>
         </Form-item>
         <Form-item label="商品名称" prop="name">
           <Input v-model="formItem.name" placeholder=""></Input>
@@ -51,11 +52,13 @@
           <Button type="ghost" style="margin-left: 8px">取消</Button>
         </Form-item>
       </Form>
+      <!-- <div>{{test}}</div> -->
     </Card>
   </div>
 </template>
 
 <script>
+import { bus } from '@/utils/bus.js'
 export default {
   data() {
     var validateTime = (rule, value, callback) => {
@@ -80,8 +83,9 @@ export default {
         search_key: '',
         rank: '',
         comment: '',
-        time: ['2016-01-01', '2016-02-15'],
-        remark: ''
+        time: [],
+        remark: '',
+        condition: ''
       },
       timeRadio: 0,
       rules: {
@@ -129,8 +133,14 @@ export default {
       },
     }
   },
-  created: function () {
+  created: function() {
     this.taobaoSelect();
+    bus.$on('productSelect', (data) => {
+      this.formItem.name = data.name;
+      this.formItem.image = data.image;
+      this.formItem.price = data.price;
+      this.formItem.condition = data.selectIndex;
+    })
   },
   methods: {
     taobaoSelect() {
@@ -164,6 +174,13 @@ export default {
           });
         }
       })
+    },
+    getProduct() {
+      if (this.formItem.url == "") {
+        this.$Message.error("请输入宝贝链接！");
+        return;
+      }
+      taobao.getProduct(this.formItem.url);
     }
   }
 }

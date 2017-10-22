@@ -54,7 +54,7 @@
             <Badge count="我的"></Badge>
             <Button type="text">价格：{{task.price}} 元</Button>
             <Button type="text">商品：
-              <a href="#">{{task.name}}</a>
+             <a :href="task.url" target="__blank">{{task.name}}</a>
             </Button>
             </Col>
           </Row>

@@ -1,7 +1,17 @@
 <template>
   <div>
     <Card>
-      <Alert show-icon>通知：通知内容。。。</Alert>
+      <Row>
+        <Col span="24">
+        <!-- <Button type="primary" @click="taobao('init')">打开淘宝</Button>
+        <Button type="primary" @click="taobao('login')">登陆测试</Button>
+        <Button type="primary" @click="taobao('search')">搜索</Button>
+        <Button type="primary" @click="taobao('page')">分页</Button>
+        <Button type="primary" @click="taobao('find')">查找点击</Button>
+        <Button type="primary" @click="taobao('buy')">购买</Button> -->
+        </Col>
+      </Row>
+      <br/>
       <Row :gutter="16">
         <Col span="16">
         <Card>
@@ -48,12 +58,22 @@ export default {
 
     }
   },
-  mounted: function () {
+  mounted: function() {
     this.test();
   },
   methods: {
     test() {
       this.$http.get('');
+    },
+    taobao(params) {
+      switch (params) {
+        case 'init': taobao.init(); break;
+        case 'login': taobao.login(); break;
+        case 'search': taobao.search(); break;
+        case 'page': taobao.page(); break;
+        case 'find': taobao.find(); break;
+        case 'buy': taobao.buy(); break;
+      }
     }
   }
 }

@@ -1,15 +1,15 @@
 <template>
   <div>
     <Card>
-      <Tabs type="card">
+      <Tabs type="card" v-model="tabIndex">
         <Tab-pane label="发布任务">
           <add></add>
         </Tab-pane>
         <Tab-pane label="已发布任务">
-          <send></send>
+          <send v-if="tabIndex==1"></send>
         </Tab-pane>
         <Tab-pane label="我的任务">
-          <my></my>
+          <my v-if="tabIndex==2"></my>
         </Tab-pane>
       </Tabs>
     </Card>
@@ -23,7 +23,7 @@ import my from './my';
 export default {
   data() {
     return {
-
+      tabIndex: 0
     }
   },
   components: {

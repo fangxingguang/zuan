@@ -29,7 +29,19 @@ function createWindow() {
   mainWindow.loadURL(winURL)
 
   mainWindow.on('closed', () => {
+    var allWin = BrowserWindow.getAllWindows();
+    allWin.forEach(function (w) {
+      w.close()
+    })
     mainWindow = null
+  })
+
+  mainWindow.webContents.on('new-window', (event, url) => {
+    event.preventDefault()
+    const win2 = new BrowserWindow({ show: false })
+    win2.once('ready-to-show', () => win2.show())
+    win2.loadURL(url)
+    event.newGuest = win2
   })
 }
 

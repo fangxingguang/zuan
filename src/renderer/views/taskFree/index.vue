@@ -3,16 +3,16 @@
     <Card>
       <Tabs type="card" v-model="tabIndex" @on-click="tabClick">
         <Tab-pane label="免费任务">
-          <list></list>
+          <list v-if="tabIndex==0"></list>
         </Tab-pane>
         <Tab-pane label="发布任务">
           <add></add>
         </Tab-pane>
         <Tab-pane label="已发布任务">
-          <send></send>
+          <send v-if="tabIndex==2"></send>
         </Tab-pane>
         <Tab-pane label="我的任务">
-          <my></my>
+          <my v-if="tabIndex==3"></my>
         </Tab-pane>
       </Tabs>
     </Card>

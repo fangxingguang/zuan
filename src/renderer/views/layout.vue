@@ -247,4 +247,8 @@ body {
   text-align: right;
   margin: 5px 0;
 }
+
+.ivu-col {
+  word-wrap: break-word;
+}
 </style>
